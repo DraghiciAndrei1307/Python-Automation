@@ -1,6 +1,11 @@
+
+"""
+    This is the setup.py script of the os_runner module.
+"""
+
 from setuptools import setup, find_packages
 
-VERSION = '0.3.3'
+VERSION = '0.3.4'
 DESCRIPTION = 'Performs os commands'
 LONG_DESCRIPTION = 'A python package for os commands'
 
@@ -17,4 +22,3 @@ setup(
 
     ]
 )
-
