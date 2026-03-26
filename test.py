@@ -1,4 +1,4 @@
-from os_runner import OsRunner
+from os_runner.os_runner import OsRunner
 
 
 if __name__ == '__main__':
