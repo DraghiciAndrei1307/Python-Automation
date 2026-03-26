@@ -44,12 +44,12 @@ class OsRunner:
 
         try:
             os.chmod(file_path, int(mode))
+            return f"The {file_path} mode was changed to {mode}"
+        except PermissionError:
+            return f"Error: You need root/admin rights"
         except Exception as e:
-            print(f"Error: {e}")
+            return f"Error: {e}"
 
-        print(f"The {file_path} mode was changed to {mode}")
-
-        return None
 
 
     def create_text_file(self, name='hello.txt', mode = '0644', path='.'):
