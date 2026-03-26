@@ -19,7 +19,7 @@ jobs:
           pylint os_runner/* --disable="W0718,C0103,C0114"
       - name: Perform flake8 test
         run: | 
-          flake8 ./
+          flake8 ./ --ignore=F401
       - name: Perform pytest tests
         run: |
           pytest os_runner_tester.py

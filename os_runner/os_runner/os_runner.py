@@ -6,6 +6,7 @@ import os
 import subprocess
 from pathlib import Path
 
+
 class OsRunner:
 
     """
@@ -28,7 +29,6 @@ class OsRunner:
 
         return os.listdir(path)
 
-
     def change_current_directory(self, path='.'):
         """
         This method changes the current working directory.
@@ -40,7 +40,6 @@ class OsRunner:
             return f"Error: Path {path} does not exist!"
 
         return os.chdir(path)
-
 
     def change_mode(self, path='.', mode='0o644'):
 
@@ -62,9 +61,7 @@ class OsRunner:
         except Exception as e:
             return f"Error: {e}"
 
-
-    def create_text_file(self, name='hello.txt', mode = '0o644', path='.'):
-
+    def create_text_file(self, name='hello.txt', mode='0o644', path='.'):
         """
         This method creates a text file with the given name.
         :param name:
@@ -96,7 +93,6 @@ class OsRunner:
         except Exception as e:
             return f"Error: {e}"
 
-
     def create_folder(self, path='.', name="hello_folder", mode='0o644'):
 
         """
@@ -126,14 +122,11 @@ class OsRunner:
         except Exception as e:
             return f"Error: {e}"
 
-
     def move(self):
         """
             This method moves the current working directory.
         :return:
         """
-
-
 
     def run_cmd(self, command):
         """
