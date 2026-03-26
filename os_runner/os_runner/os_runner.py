@@ -63,7 +63,7 @@ class OsRunner:
 
         # Before creating, list the current entries
         dir_list = self.list_entries_in_path(path)
-        print("List of directories and files before creation:")
+        print("List of directories and files BEFORE creation:")
         print(dir_list)
         print()
 
@@ -77,7 +77,7 @@ class OsRunner:
 
         # After creating
         dir_list = self.list_entries_in_path(path)
-        print("List of directories and files before creation:")
+        print("List of directories and files AFTER creation:")
         print(dir_list)
 
         return None
