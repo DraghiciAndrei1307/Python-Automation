@@ -6,4 +6,4 @@ if __name__ == '__main__':
     print(f"Contents: {my_os_runner.list_entries_in_path()}")
     my_os_runner.change_current_directory('/')
     print(f"Contents: {my_os_runner.list_entries_in_path()}")
-    print(f"Run command: {my_os_runner.run_cmd(["ls", "-ltr"])}")
+    print(f"Run command: {my_os_runner.run_cmd(['ls', '-ltr'])}")
