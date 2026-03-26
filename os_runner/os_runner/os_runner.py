@@ -1,6 +1,8 @@
 import os
+import subprocess
 
 class OsRunner:
+
     def __init__(self):
         pass
 
@@ -18,6 +20,7 @@ class OsRunner:
 
         return os.listdir(path)
 
+
     def change_current_directory(self, path='.'):
 
         """
@@ -31,7 +34,18 @@ class OsRunner:
 
         return os.chdir(path)
 
+
     def run_cmd(self, command):
-        pass
+        """
+        This method runs a command and returns the output.
+        :param command:
+        :return:
+        """
+
+        try:
+            cmd = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            return cmd.returncode, cmd.stdout.decode()
+        except Exception as e:
+            print(f"Error: {e}")
 
 
