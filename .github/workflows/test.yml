@@ -16,7 +16,7 @@ jobs:
           pip install -r requirements.txt
       - name: Perform pylint test
         run: |
-          pylint os_runner/* --disable=W0718, C0103, C0114
+          pylint os_runner/* --disable="W0718,C0103,C0114"
       - name: Perform flake8 test
         run: | 
           flake8 ./
