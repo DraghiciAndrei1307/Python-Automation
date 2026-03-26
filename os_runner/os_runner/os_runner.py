@@ -1,10 +1,13 @@
 import os
 import subprocess
+from pathlib import Path
 
 class OsRunner:
 
     def __init__(self):
-        pass
+
+        self.home = Path.home()
+
 
 
     def list_entries_in_path(self, path='.'):
