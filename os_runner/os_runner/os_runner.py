@@ -35,6 +35,51 @@ class OsRunner:
         return os.chdir(path)
 
 
+    def change_file_mode(self, path='.', name='hello.txt' , mode='0o644'):
+
+        if not os.path.exists(path):
+            return f"Error: Path {path} does not exist!"
+
+        file_path = os.path.join(path, name)
+
+        try:
+            os.chmod(file_path, int(mode))
+        except Exception as e:
+            print(f"Error: {e}")
+
+        print(f"The {file_path} mode was changed to {mode}")
+
+        return None
+
+
+    def create_text_file(self, name='hello.txt', mode = '0644', path='.'):
+
+        # Check if the path exists
+        if not os.path.exists(path):
+            return f"Error: Path {path} does not exist!"
+
+        # Before creating, list the current entries
+        dir_list = self.list_entries_in_path(path)
+        print("List of directories and files before creation:")
+        print(dir_list)
+        print()
+
+        # Create a new file at the designated path
+        file_path = os.path.join(path, name)
+        with open(file_path, 'w') as f:
+            pass
+
+        # Change mode of the
+        self.change_file_mode(path, name, mode)
+
+        # After creating
+        dir_list = self.list_entries_in_path(path)
+        print("List of directories and files before creation:")
+        print(dir_list)
+
+        return None
+
+
     def run_cmd(self, command):
         """
         This method runs a command and returns the output.
@@ -48,4 +93,4 @@ class OsRunner:
         except Exception as e:
             print(f"Error: {e}")
 
-
+        return None
