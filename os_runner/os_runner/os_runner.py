@@ -5,10 +5,7 @@ from pathlib import Path
 class OsRunner:
 
     def __init__(self):
-
         self.home = Path.home()
-
-
 
     def list_entries_in_path(self, path='.'):
         """
@@ -38,49 +35,70 @@ class OsRunner:
         return os.chdir(path)
 
 
-    def change_file_mode(self, path='.', name='hello.txt' , mode='0o644'):
+    def change_mode(self, path='.', mode='0o644'):
 
         if not os.path.exists(path):
             return f"Error: Path {path} does not exist!"
 
-        file_path = os.path.join(path, name)
-
         try:
-            os.chmod(file_path, int(mode))
-            return f"The {file_path} mode was changed to {mode}"
+            os.chmod(path, int(mode))
+            return f"The {path} mode was changed to {mode}"
         except PermissionError:
             return f"Error: You need root/admin rights"
         except Exception as e:
             return f"Error: {e}"
 
 
-
-    def create_text_file(self, name='hello.txt', mode = '0644', path='.'):
+    def create_text_file(self, name='hello.txt', mode = '0o644', path='.'):
 
         # Check if the path exists
         if not os.path.exists(path):
             return f"Error: Path {path} does not exist!"
 
-        # Before creating, list the current entries
-        dir_list = self.list_entries_in_path(path)
-        print("List of directories and files BEFORE creation:")
-        print(dir_list)
-        print()
-
         # Create a new file at the designated path
-        file_path = os.path.join(path, name)
-        with open(file_path, 'w') as f:
-            pass
 
-        # Change mode of the
-        self.change_file_mode(path, name, mode)
+        try:
+            file_path = os.path.join(path, name)
 
-        # After creating
-        dir_list = self.list_entries_in_path(path)
-        print("List of directories and files AFTER creation:")
-        print(dir_list)
+            with open(file_path, 'w') as f:
+                pass
 
-        return None
+            # Change mode of the
+            self.change_mode(file_path, mode)
+
+            return f"Successfully created file: {file_path}"
+
+        except PermissionError:
+            return f"Error: You need root/admin rights"
+
+        except Exception as e:
+            print(f"Error: {e}")
+
+
+    def create_folder(self, path='.', name="hello_folder", mode='0o644'):
+
+        # Check if the path exists
+        if not os.path.exists(path):
+            return f"Error: Path {path} does not exist!"
+
+        try:
+            folder_path = os.path.join(path, name)
+
+            os.mkdir(folder_path)
+
+            # Change mode of the
+            self.change_mode(folder_path, mode)
+
+            return f"Successfully created file: {folder_path}"
+
+        except PermissionError:
+            return f"Error: You need root/admin rights"
+        except Exception as e:
+            return f"Error: {e}"
+
+
+    def move(self):
+        pass
 
 
     def run_cmd(self, command):
