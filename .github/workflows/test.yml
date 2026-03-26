@@ -1,0 +1,27 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - test
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Perform pylint test
+        run: |
+          pylint ./
+      - name: Perform flake8 test
+        run: | 
+          flake8 ./
+      - name: Perform pytest tests
+        run: |
+          pytest os_runner_tester.py
+        
+      
