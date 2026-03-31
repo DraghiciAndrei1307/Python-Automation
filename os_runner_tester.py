@@ -98,7 +98,7 @@ class TestOsRunner:
             path=path
         )
 
-        new_path=os.path.join(path, name)
+        new_path = os.path.join(path, name)
 
         self.test_path_exist(path=new_path)
 
