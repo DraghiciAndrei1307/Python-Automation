@@ -100,7 +100,9 @@ class TestOsRunner:
 
         new_path = os.path.join(path, name)
 
-        self.test_path_exist(path=new_path)
+        result = self.runner.list_entries_in_path(new_path)
+
+        assert result["exit_code"] == 0
 
         result = self.runner.change_mode(
             path=new_path,
