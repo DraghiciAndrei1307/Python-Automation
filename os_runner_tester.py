@@ -39,7 +39,8 @@ class TestOsRunner:
         """
         result = self.runner.list_entries_in_path(path)
 
-        assert result["success"]
+        assert result["exit_code"] == 0
+
 
     def test_list_entry_current_dir(self, entry="setup.py"):
         """
