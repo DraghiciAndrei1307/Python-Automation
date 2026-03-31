@@ -5,10 +5,14 @@
 
     {
         "success": True,       # boolean True/False
-        "stdout": "...",       # standard output message (what the command printed)
-        "stderr": "...",       # standard error message (what the command printed)
-        "exit_code": 0,        # process exit code (0 means success in Linux)
-        "message": "..."       # this should be a short message created by you
+        "stdout": "...",       # standard output message
+                                    (what the command printed)
+        "stderr": "...",       # standard error message
+                                    (what the command printed)
+        "exit_code": 0,        # process exit code
+                                    (0 means success in Linux)
+        "message": "..."       # this should be a short
+                                    message created by you
     }
 
 """
@@ -308,7 +312,6 @@ class OsRunner:
                 "exit_code": 2,
                 "data": []
             }
-
 
     def run_cmd(self, command):
         """

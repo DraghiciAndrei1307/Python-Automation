@@ -20,7 +20,7 @@ class TestOsRunner:
         """
 
         result = self.runner.list_entries_in_path("fake_path")
-        assert result["success"] == False
+        assert not result["success"]
 
     def test_path_exist(self, path="."):
         """
@@ -29,7 +29,7 @@ class TestOsRunner:
         """
         result = self.runner.list_entries_in_path(path)
 
-        assert result["success"] == True
+        assert result["success"]
 
     def test_list_entry_current_dir(self, entry="setup.py"):
         """
@@ -39,7 +39,7 @@ class TestOsRunner:
 
         result = self.runner.list_entries_in_path()
 
-        assert result["success"] == True
+        assert result["success"]
 
         data = result["data"]
 
@@ -55,7 +55,7 @@ class TestOsRunner:
     def test_create_file(self, name="hello_world.txt"):
         result = self.runner.create_text_file(name=name)
 
-        assert result["success"] == True
+        assert result["success"]
         assert result["exit_code"] == 0
 
     def test_create_file_rights_missing(
@@ -65,17 +65,17 @@ class TestOsRunner:
     ):
         result = self.runner.create_text_file(name=name, path=path)
 
-        assert result["success"] == True
+        assert result["success"]
         assert self.test_path_exist(path=os.path.join(path, name))
 
     def test_create_folder(self, path=".", name="hello_world"):
         result = self.runner.create_folder(path=path, name=name)
 
-        assert result["success"] == True
+        assert result["success"]
         assert self.test_path_exist(path=os.path.join(path, name))
 
     def test_create_folder_rights_missing(self, name="hello_world", path="/"):
         result = self.runner.create_folder(name=name, path=path)
 
-        assert result["success"] == True
+        assert result["success"]
         assert self.test_path_exist(path=os.path.join(path, name))
