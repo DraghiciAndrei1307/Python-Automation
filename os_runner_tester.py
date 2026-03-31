@@ -101,8 +101,8 @@ class TestOsRunner:
         )
 
         new_path = os.path.join(path, name)
-
-        self.test_path_exist(path=new_path) # we should not do this
+        # we should not do this
+        self.test_path_exist(path=new_path)
 
         result = self.runner.change_mode(
             path=new_path,
