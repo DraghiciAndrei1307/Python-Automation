@@ -132,7 +132,7 @@ class OsRunner:
             return {
                 "success": True,
                 "stdout": "Success",
-                "stderr": f"",
+                "stderr": "",
                 "exit_code": 0,
                 "data": []
             }
@@ -183,7 +183,7 @@ class OsRunner:
 
             return {
                 "success": True,
-                "stdout": f"Success",
+                "stdout": "Success",
                 "stderr": "",
                 "exit_code": 0,
                 "data": []
@@ -237,7 +237,7 @@ class OsRunner:
 
             return {
                 "success": True,
-                "stdout": f"Success",
+                "stdout": "Success",
                 "stderr": "",
                 "exit_code": 0,
                 "data": []
@@ -287,7 +287,7 @@ class OsRunner:
             shutil.move(source, destination)
             return {
                 "success": True,
-                "stdout": f"Success",
+                "stdout": "Success",
                 "stderr": "",
                 "exit_code": 0,
                 "data": []
