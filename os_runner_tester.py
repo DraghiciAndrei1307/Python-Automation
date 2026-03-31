@@ -1,9 +1,18 @@
+
+"""
+    This module contains the TestOsRunner class
+"""
+
 import os
 
 from os_runner.os_runner import OsRunner
 
 
 class TestOsRunner:
+
+    """
+    This class contains tests that check the functionality of the OsRunner class
+    """
 
     def setup_method(self):
         """
@@ -79,3 +88,16 @@ class TestOsRunner:
 
         assert result["exit_code"] == 2
         self.test_path_not_exist(path=os.path.join(path, name))
+
+    def test_change_mode(self, path=".", mode="0o644", name="andrei.txt"):
+
+        self.runner.create_text_file(name=name, mode=mode, path=path)
+
+        self.test_path_exist(path=os.path.join(path, name))
+
+        result = self.runner.change_mode(path=os.path.join(path, name), mode=mode)
+
+        assert result["success"]
+        assert result["exit_code"] == 0
+
+
