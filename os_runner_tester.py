@@ -66,7 +66,7 @@ class TestOsRunner:
         result = self.runner.create_text_file(name=name, path=path)
 
         assert result["exit_code"] == 2
-        self.test_path_exist(path=os.path.join(path, name))
+        self.test_path_not_exist(path=os.path.join(path, name))
 
     def test_create_folder(self, path=".", name="hello_world"):
         result = self.runner.create_folder(path=path, name=name)
@@ -78,4 +78,4 @@ class TestOsRunner:
         result = self.runner.create_folder(name=name, path=path)
 
         assert result["exit_code"] == 2
-        self.test_path_exist(path=os.path.join(path, name))
+        self.test_path_not_exist(path=os.path.join(path, name))
