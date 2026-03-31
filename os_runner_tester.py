@@ -37,7 +37,7 @@ class TestOsRunner:
         Test path exist
         :return:
         """
-        result = self.runner.list_entries_in_path(path)
+        result = self.runner.run_cmd(["ls", "-la", path])
 
         assert result["exit_code"] == 0
 
@@ -100,9 +100,7 @@ class TestOsRunner:
 
         new_path = os.path.join(path, name)
 
-        result = self.runner.list_entries_in_path(new_path)
-
-        assert result["exit_code"] == 0
+        self.test_path_exist(path=new_path)
 
         result = self.runner.change_mode(
             path=new_path,
