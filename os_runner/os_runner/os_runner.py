@@ -1,10 +1,22 @@
 """
     This module contains the OsRunner class.
+
+    The methods should return something like:
+
+    {
+        "success": True,       # boolean True/False
+        "stdout": "...",       # standard output message (what the command printed)
+        "stderr": "...",       # standard error message (what the command printed)
+        "exit_code": 0,        # process exit code (0 means success in Linux)
+        "message": "..."       # this should be a short message created by you
+    }
+
 """
 
 import os
 import subprocess
 from pathlib import Path
+import shutil
 
 
 class OsRunner:
@@ -25,9 +37,41 @@ class OsRunner:
         :return:
         """
         if not os.path.exists(path):
-            return f"Error: Path {path} does not exist!"
 
-        return os.listdir(path)
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {path} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
+
+        try:
+
+            return {
+                "success": True,
+                "stdout": "Success",
+                "stderr": "",
+                "exit_code": 0,
+                "data": os.listdir(path)
+            }
+        except PermissionError:
+
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": "Permission denied!",
+                "exit_code": 2,
+                "data": []
+            }
+        except Exception as e:
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
 
     def change_current_directory(self, path='.'):
         """
@@ -37,29 +81,77 @@ class OsRunner:
         """
 
         if not os.path.exists(path):
-            return f"Error: Path {path} does not exist!"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {path} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
 
-        return os.chdir(path)
+        try:
+            os.chdir(path)
+
+            return {
+                "success": True,
+                "stdout": "Success",
+                "stderr": "",
+                "exit_code": 0,
+                "data": []
+            }
+        except Exception as e:
+
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
 
     def change_mode(self, path='.', mode='0o644'):
 
         """
-            This method changes the access rights of a specific path
+        This method changes the access rights of a specific path
         :param path:
         :param mode:
         :return:
         """
 
         if not os.path.exists(path):
-            return f"Error: Path {path} does not exist!"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {path} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
 
         try:
             os.chmod(path, int(mode))
-            return f"The {path} mode was changed to {mode}"
+            return {
+                "success": True,
+                "stdout": "Success",
+                "stderr": f"",
+                "exit_code": 0,
+                "data": []
+            }
         except PermissionError:
-            return "Error: You need root/admin rights"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": "Permission denied!",
+                "exit_code": 2,
+                "data": []
+            }
         except Exception as e:
-            return f"Error: {e}"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
 
     def create_text_file(self, name='hello.txt', mode='0o644', path='.'):
         """
@@ -72,9 +164,13 @@ class OsRunner:
 
         # Check if the path exists
         if not os.path.exists(path):
-            return f"Error: Path {path} does not exist!"
-
-        # Create a new file at the designated path
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {path} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
 
         try:
             file_path = os.path.join(path, name)
@@ -85,13 +181,31 @@ class OsRunner:
             # Change mode of the
             self.change_mode(file_path, mode)
 
-            return f"Successfully created file: {file_path}"
+            return {
+                "success": True,
+                "stdout": f"Success",
+                "stderr": "",
+                "exit_code": 0,
+                "data": []
+            }
 
         except PermissionError:
-            return "Error: You need root/admin rights"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": "Permission denied!",
+                "exit_code": 2,
+                "data": []
+            }
 
         except Exception as e:
-            return f"Error: {e}"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
 
     def create_folder(self, path='.', name="hello_folder", mode='0o644'):
 
@@ -105,7 +219,13 @@ class OsRunner:
 
         # Check if the path exists
         if not os.path.exists(path):
-            return f"Error: Path {path} does not exist!"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {path} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
 
         try:
             folder_path = os.path.join(path, name)
@@ -115,18 +235,80 @@ class OsRunner:
             # Change mode of the
             self.change_mode(folder_path, mode)
 
-            return f"Successfully created file: {folder_path}"
-
+            return {
+                "success": True,
+                "stdout": f"Success",
+                "stderr": "",
+                "exit_code": 0,
+                "data": []
+            }
         except PermissionError:
-            return "Error: You need root/admin rights"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": "Permission denied!",
+                "exit_code": 2,
+                "data": []
+            }
         except Exception as e:
-            return f"Error: {e}"
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
 
-    def move(self):
+    def move(self, source=".", destination="."):
         """
-            This method moves the current working directory.
+        This method moves the current working directory.
         :return:
         """
+
+        if not os.path.exists(source):
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {source} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
+
+        if not os.path.exists(destination):
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: Path {destination} does not exist!",
+                "exit_code": 2,
+                "data": []
+            }
+
+        try:
+            shutil.move(source, destination)
+            return {
+                "success": True,
+                "stdout": f"Success",
+                "stderr": "",
+                "exit_code": 0,
+                "data": []
+            }
+        except PermissionError:
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": "Permission denied!",
+                "exit_code": 2,
+                "data": []
+            }
+        except Exception as e:
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
+
 
     def run_cmd(self, command):
         """
@@ -139,12 +321,22 @@ class OsRunner:
             cmd = subprocess.run(
                 command,
                 shell=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
                 check=False,
+                capture_output=True,
+                text=True
             )
-            return cmd.returncode, cmd.stdout.decode()
+            return {
+                "success": cmd.returncode == 0,
+                "stdout": cmd.stdout,
+                "stderr": cmd.stderr,
+                "exit_code": cmd.returncode,
+                "data": []
+            }
         except Exception as e:
-            print(f"Error: {e}")
-
-        return None
+            return {
+                "success": False,
+                "stdout": "",
+                "stderr": f"Error: {e}",
+                "exit_code": 2,
+                "data": []
+            }
