@@ -90,7 +90,7 @@ class TestOsRunner:
         assert result["exit_code"] == 2
         self.test_path_not_exist(path=os.path.join(path, name))
 
-    def test_change_mode(self, path=".", mode="0o641", name="andrei.txt"):
+    def test_change_mode(self, path=".", mode="0641", name="andrei.txt"):
 
         self.runner.create_text_file(
             name=name,
@@ -104,7 +104,7 @@ class TestOsRunner:
 
         result = self.runner.change_mode(
             path=new_path,
-            mode="0o644"
+            mode="0644"
         )
 
         assert result["success"]

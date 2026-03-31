@@ -113,7 +113,7 @@ class OsRunner:
                 "data": []
             }
 
-    def change_mode(self, path='.', mode='0o644'):
+    def change_mode(self, path='.', mode='0644'):
 
         """
         This method changes the access rights of a specific path
@@ -132,7 +132,7 @@ class OsRunner:
             }
 
         try:
-            os.chmod(path, int(mode))
+            os.chmod(path, int(mode, 8))
             return {
                 "success": True,
                 "stdout": "Success",
@@ -157,7 +157,7 @@ class OsRunner:
                 "data": []
             }
 
-    def create_text_file(self, name='hello.txt', mode='0o644', path='.'):
+    def create_text_file(self, name='hello.txt', mode='0644', path='.'):
         """
         This method creates a text file with the given name.
         :param name:
@@ -211,7 +211,7 @@ class OsRunner:
                 "data": []
             }
 
-    def create_folder(self, path='.', name="hello_folder", mode='0o644'):
+    def create_folder(self, path='.', name="hello_folder", mode='0644'):
 
         """
         This method creates a folder with the given name.
