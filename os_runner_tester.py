@@ -13,13 +13,13 @@ class TestOsRunner:
 
         self.runner = OsRunner()
 
-    def test_path_not_exist(self):
+    def test_path_not_exist(self, path="fake_path"):
         """
         Test path not exist
         :return:
         """
 
-        result = self.runner.list_entries_in_path("fake_path")
+        result = self.runner.list_entries_in_path(path)
         assert not result["success"]
 
     def test_path_exist(self, path="."):
