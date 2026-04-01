@@ -4,7 +4,7 @@
 import click
 from setuptools import setup, find_packages
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 DESCRIPTION = 'This is the CLI interface between the user and the os_runner'
 LONG_DESCRIPTION = ('This is a layer of abstraction that defines the way the '
                     'user should use the os_runner capabilities.')
@@ -20,6 +20,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
     install_requires=[
-        click
+        'click',
+        'os_runner_draghici_andrei'
     ]
 )
