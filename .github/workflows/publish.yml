@@ -23,7 +23,7 @@ jobs:
           cd os_runner
           python -m build
           twine upload dist/* --verbose
-      - name: Create GitHub Release
+      - name: Create GitHub Release for 'os_runner' package
         uses: softprops/action-gh-release@v2
         with:
           files: |
