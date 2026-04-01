@@ -14,7 +14,7 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: |
-          pip install setuptools wheel twine build
+          pip install setuptools wheel twine build click
       - name: Build and Publish 'os_executor' package to PyPi
         env:
           TWINE_USERNAME: __token__
