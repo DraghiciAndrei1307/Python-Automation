@@ -23,7 +23,7 @@ jobs:
         env:
           TWINE_USERNAME: ${{ github.actor }}
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-          TWINE_REPOSITORY_URL: https://maven.pkg.github.com/${{ github.repository }}
+          TWINE_REPOSITORY_URL: https://maven.pkg.github.com/${{ github.repository }}/
         run: |
           twine upload --repository-url $TWINE_REPOSITORY_URL dist/*
 
