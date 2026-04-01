@@ -5,7 +5,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3.11'
+VERSION = '0.3.12'
 DESCRIPTION = 'Performs os commands'
 LONG_DESCRIPTION = 'A python package for os commands'
 
@@ -15,7 +15,7 @@ setup(
     version=VERSION,
     author='Andrei Draghici',
     author_email='draghici.andrei12@yahoo.com',
-    url='https://github.com/DraghiciAndrei1307/Python-Automation',
+    url='https://pypi.pkg.github.com/draghiciandrei1307/python-automation/',
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
