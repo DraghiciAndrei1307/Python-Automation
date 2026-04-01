@@ -1,4 +1,4 @@
-name: Publish Package (PyPI & GitHub)
+name: Publish 'os_executor' Package (PyPI & GitHub)
 on: workflow_dispatch
 jobs:
   publish:
@@ -15,15 +15,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install setuptools wheel twine build
-      - name: Build and Publish 'os_runner' package to PyPi
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          cd os_runner
-          python -m build
-          twine upload dist/* --verbose
-          cd ..
       - name: Build and Publish 'os_executor' package to PyPi
         env:
           TWINE_USERNAME: __token__
@@ -32,16 +23,6 @@ jobs:
           cd os_executor
           python -m build
           twine upload dist/* --verbose
-          cd ..
-      - name: Create GitHub Release for 'os_runner' package
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            os_runner/dist/*.whl
-            os_runner/dist/*.tar.gz
-          tag_name: v0.4.0
-          name: Release v0.4.0
-          body: "The first official release of the os_runner_draghici_andrei package"
       - name: Create GitHub Release for 'os_executor' package
         uses: softprops/action-gh-release@v2
         with:
