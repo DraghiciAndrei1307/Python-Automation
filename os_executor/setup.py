@@ -1,7 +1,7 @@
 """
     This is the setup.py script of the os_executor module.
 """
-import click
+
 from setuptools import setup, find_packages
 
 VERSION = '0.1.1'
