@@ -20,9 +20,9 @@ jobs:
         env:
           TWINE_USERNAME: ${{ github.actor }}
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-          TWINE_REPOSITORY_URL: https://pypi.pkg.github.com/draghiciandrei1307/
+          TWINE_REPOSITORY_URL: https://pypi.pkg.github.com/${{ github.repository }}
         run: |
           cd os_runner
           python setup.py sdist bdist_wheel
-          twine upload --repository-url $TWINE_REPOSITORY_URL dist/* --verbose
+          twine upload --repository-url $TWINE_REPOSITORY_URL dist/* --verbose --skip-existing
 
