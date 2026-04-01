@@ -5,13 +5,13 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3.6'
+VERSION = '0.3.7'
 DESCRIPTION = 'Performs os commands'
 LONG_DESCRIPTION = 'A python package for os commands'
 
 
 setup(
-    name='ptyhon_os_runner',
+    name='os_runner',
     version=VERSION,
     author='Andrei Draghici',
     author_email='draghici.andrei12@yahoo.com',

@@ -16,14 +16,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install setuptools wheel twine
-      - name: Build os_runner package
-        run: |
-          python os_runner/setup.py sdist bdist_wheel
-      - name: Publish package
+      - name: Build and Publish os_runner
         env:
           TWINE_USERNAME: ${{ github.actor }}
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-          TWINE_REPOSITORY_URL: https://pypi.pkg.github.com/draghiciandrei1307/python-automation
+          TWINE_REPOSITORY_URL: https://pypi.pkg.github.com/${{ github.repository }}/
         run: |
+          cd os_runner
+          python setup.py sdist bdist_wheel
           twine upload --repository-url $TWINE_REPOSITORY_URL dist/* --verbose
 
