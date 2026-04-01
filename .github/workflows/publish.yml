@@ -24,5 +24,5 @@ jobs:
         run: |
           cd os_runner
           python setup.py sdist bdist_wheel
-          twine upload --repository-url $TWINE_REPOSITORY_URL dist/* --verbose --skip-existing
+          twine upload --repository-url $TWINE_REPOSITORY_URL dist/* --verbose
 
