@@ -23,6 +23,16 @@ jobs:
           cd os_runner
           python -m build
           twine upload dist/* --verbose
+          cd ..
+      - name: Build and Publish 'os_executor' package to PyPi
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          cd os_executor
+          python -m build
+          twine upload dist/* --verbose
+          cd ..
       - name: Create GitHub Release for 'os_runner' package
         uses: softprops/action-gh-release@v2
         with:
@@ -32,3 +42,12 @@ jobs:
           tag_name: v0.4.0
           name: Release v0.4.0
           body: "The first official release of the os_runner_draghici_andrei package"
+      - name: Create GitHub Release for 'os_executor' package
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            os_executor/dist/*.whl
+            os_executor/dist/*.tar.gz
+          tag_name: v0.1.0
+          name: Release v0.1.0
+          body: "The first official release of the os_executor_draghici_andrei package"
