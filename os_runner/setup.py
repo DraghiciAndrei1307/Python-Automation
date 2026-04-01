@@ -5,7 +5,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3.13'
+VERSION = '0.4.0'
 DESCRIPTION = 'Performs os commands'
 LONG_DESCRIPTION = 'A python package for os commands'
 
