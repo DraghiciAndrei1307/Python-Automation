@@ -115,7 +115,7 @@ def create_file(ctx, name, path, mode):
     :return:
     """
     os_runner = setup_os_runner()
-    print(os_runner.create_text_file(name=name, path=path, mode=mode))
+    print(os_runner.create_file(name=name, path=path, mode=mode))
 
 @cli.command()
 @click.option(
@@ -163,7 +163,7 @@ def change_access_rights(ctx, path, mode):
          'Use digits to configure the mode (e.g. 0644).'
 )
 @click.pass_context
-def create_new_folder(ctx, path, name, mode):
+def create_folder(ctx, path, name, mode):
     os_runner = setup_os_runner()
     print(os_runner.create_folder(path=path, name=name, mode=mode))
 
@@ -185,14 +185,13 @@ def move(ctx, src, dest):
     os_runner = setup_os_runner()
     print(os_runner.move(source=src, destination=dest))
 
-@cli.command()
-@click.option(
-    '--command',
-    type=list,
-    prompt='Enter a command',
-    help='The command you want to execute.'
-)
+@cli.command(name="run-command")
+@click.argument('cmd_args', nargs=-1)
 @click.pass_context
-def run_command(ctx, command):
+def run_cmd(ctx, cmd_args):
+    if not cmd_args:
+        click.echo("Error: You need to enter a command.")
+        return
+
     os_runner = setup_os_runner()
-    print(os_runner.run_cmd(command))
+    print(os_runner.run_cmd(list(cmd_args)))
