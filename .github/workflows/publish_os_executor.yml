@@ -1,5 +1,8 @@
 name: Publish 'os_executor' Package (PyPI & GitHub)
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 jobs:
   publish:
     runs-on: ubuntu-latest
