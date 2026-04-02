@@ -1,5 +1,10 @@
 import click
 
+from os_runner_draghici_andrei import OsRunner
+
+def setup_os_runner():
+    return OsRunner()
+
 @click.group()
 @click.pass_context
 def cli(ctx):
@@ -11,6 +16,7 @@ def cli(ctx):
     :return:
     """
     ctx.ensure_object(dict)
+
 
 @cli.command()
 @click.option('--count', default=1, help='Number of greetings.')
@@ -29,3 +35,12 @@ def hello(ctx, count, name):
 def goodbye(ctx, name):
     """Simple command that says goodbye NAME."""
     click.echo(f"Goodbye {name}!")
+
+
+@cli.command()
+@click.option('--path', prompt='Enter a path', help='The path you want to list the entries for.')
+@click.pass_context
+def list_entries(ctx, path):
+    os_runner = setup_os_runner()
+    os_runner.list_entries(path)
+
