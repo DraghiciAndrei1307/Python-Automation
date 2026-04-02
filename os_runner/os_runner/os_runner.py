@@ -313,12 +313,14 @@ class OsRunner:
                 "data": []
             }
 
-    def run_cmd(self, command):
+    def run_cmd(self, input_command):
         """
         This method runs a command and returns the output.
-        :param command:
+        :param input_command:
         :return:
         """
+
+        command = input_command.split()
 
         try:
             cmd = subprocess.run(

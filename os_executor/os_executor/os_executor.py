@@ -3,6 +3,10 @@ import click
 from os_runner import OsRunner
 
 def setup_os_runner():
+    """
+    Sets up the os runner.
+    :return:
+    """
     return OsRunner()
 
 @click.group()
@@ -164,6 +168,14 @@ def change_access_rights(ctx, path, mode):
 )
 @click.pass_context
 def create_folder(ctx, path, name, mode):
+    """
+    Command that creates a new folder.
+    :param ctx:
+    :param path:
+    :param name:
+    :param mode:
+    :return:
+    """
     os_runner = setup_os_runner()
     print(os_runner.create_folder(path=path, name=name, mode=mode))
 
@@ -182,16 +194,34 @@ def create_folder(ctx, path, name, mode):
 )
 @click.pass_context
 def move(ctx, src, dest):
+    """
+    Command that moves files from src to dest.
+    :param ctx:
+    :param src:
+    :param dest:
+    :return:
+    """
     os_runner = setup_os_runner()
     print(os_runner.move(source=src, destination=dest))
 
 @cli.command(name="run-command")
-@click.argument('cmd_args', nargs=-1)
+@click.option(
+    '--command',
+    type=str,
+    prompt='Enter a command',
+    help='The command you want to run.',
+)
 @click.pass_context
-def run_cmd(ctx, cmd_args):
-    if not cmd_args:
+def run_cmd(ctx, command):
+    """
+    Command that runs a command.
+    :param ctx:
+    :param command:
+    :return:
+    """
+    if not command:
         click.echo("Error: You need to enter a command.")
         return
 
     os_runner = setup_os_runner()
-    print(os_runner.run_cmd(list(cmd_args)))
+    print(os_runner.run_cmd(command))
