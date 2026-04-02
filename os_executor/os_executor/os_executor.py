@@ -12,7 +12,7 @@ def cli(ctx):
     """
     ctx.ensure_object(dict)
 
-@click.command()
+@cli.command()
 @click.option('--count', default=1, help='Number of greetings.')
 @click.option('--name', prompt='Your name',
               help='The person to greet.')
@@ -25,7 +25,7 @@ def hello(ctx, count, name):
 @click.command()
 @click.option('--name', prompt='Your name',
               help='The person to say goodbye to.')
-@click.pass_context
+@cli.pass_context
 def goodbye(ctx, name):
     """Simple command that says goodbye NAME."""
     click.echo(f"Goodbye {name}!")
