@@ -1,6 +1,6 @@
 import click
 
-from os_runner_draghici_andrei import OsRunner
+from os_runner import OsRunner
 
 def setup_os_runner():
     return OsRunner()

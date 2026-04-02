@@ -4,7 +4,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3.0'
+VERSION = '0.3.1'
 DESCRIPTION = 'This is the CLI interface between the user and the os_runner'
 LONG_DESCRIPTION = ('This is a layer of abstraction that defines the way the '
                     'user should use the os_runner capabilities.')
@@ -26,7 +26,7 @@ setup(
     entry_points={
         'console_scripts': [
             # 'terminal command = package.file:function'
-            'os-executor=os_executor.os_executor:cli',
+            'os_executor=os_executor.os_executor:cli',
         ],
     },
 )
