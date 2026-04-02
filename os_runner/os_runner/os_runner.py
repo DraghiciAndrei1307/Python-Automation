@@ -157,7 +157,7 @@ class OsRunner:
                 "data": []
             }
 
-    def create_text_file(self, name='hello.txt', mode='0644', path='.'):
+    def create_file(self, name='hello.txt', mode='0644', path='.'):
         """
         This method creates a text file with the given name.
         :param name:
@@ -179,7 +179,7 @@ class OsRunner:
         try:
             file_path = os.path.join(path, name)
 
-            with open(file_path, 'w', encoding='utf-8'):
+            with open(file_path, 'x', encoding='utf-8'):
                 pass
 
             # Change mode of the
@@ -323,7 +323,7 @@ class OsRunner:
         try:
             cmd = subprocess.run(
                 command,
-                shell=True,
+                shell=False,
                 check=False,
                 capture_output=True,
                 text=True
