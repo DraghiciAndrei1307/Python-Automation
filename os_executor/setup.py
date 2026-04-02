@@ -4,7 +4,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.1.2'
+VERSION = '0.2.0'
 DESCRIPTION = 'This is the CLI interface between the user and the os_runner'
 LONG_DESCRIPTION = ('This is a layer of abstraction that defines the way the '
                     'user should use the os_runner capabilities.')
