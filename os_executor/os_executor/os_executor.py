@@ -54,5 +54,5 @@ def goodbye(ctx, name):
 @click.pass_context
 def list_entries(ctx, path):
     os_runner = setup_os_runner()
-    os_runner.list_entries_in_path(path)
+    print(os_runner.list_entries_in_path(path))
 
