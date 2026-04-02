@@ -22,10 +22,10 @@ def hello(ctx, count, name):
     for x in range(count):
         click.echo(f"Hello {name}!")
 
-@click.command()
+@cli.command()
 @click.option('--name', prompt='Your name',
               help='The person to say goodbye to.')
-@cli.pass_context
+@click.pass_context
 def goodbye(ctx, name):
     """Simple command that says goodbye NAME."""
     click.echo(f"Goodbye {name}!")
