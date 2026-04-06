@@ -24,7 +24,7 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         run: |
-          cd os_executor
+          cd pg_executor
           python -m build
           twine upload dist/* --verbose
       - name: Create GitHub Release for 'pg_executor' package
