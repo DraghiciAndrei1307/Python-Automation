@@ -1,0 +1,38 @@
+name: Publish 'pg_runner' Package (PyPI & GitHub)
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install setuptools wheel twine build
+          pip install -r requirements.txt
+      - name: Build and Publish 'pg_runner' package to PyPi
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          cd pg_runner
+          python -m build
+          twine upload dist/* --verbose
+      - name: Create GitHub Release for 'pg_runner' package
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            pg_runner/dist/*.whl
+            pg_runner/dist/*.tar.gz
+          tag_name: v0.1.0
+          name: Release v0.1.0
+          body: "The official release of the pg_runner_draghici_andrei package"
