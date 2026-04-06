@@ -313,7 +313,7 @@ class OsRunner:
                 "data": []
             }
 
-    def run_cmd(self, input_command):
+    def run_cmd(self, input_command, input_data=None):
         """
         This method runs a command and returns the output.
         :param input_command:
@@ -327,6 +327,7 @@ class OsRunner:
                 command,
                 shell=False,
                 check=False,
+                input=input_data,
                 capture_output=True,
                 text=True
             )

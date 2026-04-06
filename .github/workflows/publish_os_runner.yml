@@ -33,6 +33,6 @@ jobs:
           files: |
             os_runner/dist/*.whl
             os_runner/dist/*.tar.gz
-          tag_name: v0.4.2
-          name: Release v0.4.2
+          tag_name: v0.4.3
+          name: Release v0.4.3
           body: "The first official release of the os_runner_draghici_andrei package"
