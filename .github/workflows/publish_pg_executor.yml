@@ -35,4 +35,4 @@ jobs:
             pg_executor/dist/*.tar.gz
           tag_name: v0.1.0
           name: Release v0.1.0
-          body: "The official release of the pg_executor_draghici_andrei package"
+          body: "The official release of the pg_executor_draghici_andrei package."
