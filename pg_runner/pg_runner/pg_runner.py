@@ -19,7 +19,7 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            input_command=f'echo {self.become_password} | '
+            input_command=f'echo "{self.become_password}" | '
                     'sudo -S systemctl status '
                     f'postgresql-{version}'
         )
@@ -31,7 +31,7 @@ class PgRunner:
 
         if self.check_postgresql_status(version):
             return self.os_runner.run_cmd(
-                input_command=f'echo {self.become_password} | '
+                input_command=f'echo "{self.become_password}" | '
                         f'sudo -S systemctl start postgresql-{version}'
             )
 
@@ -41,7 +41,7 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            input_command=f'echo {self.become_password} | '
+            input_command=f'echo "{self.become_password}" | '
                     f'sudo -S systemctl stop postgresql-{version}'
         )
 
@@ -51,7 +51,7 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            input_command=f'echo {self.become_password} | '
+            input_command=f'echo "{self.become_password}" | '
                     'sudo -S -u postgres pgbackrest '
                     '--stanza=demo '
                     '--type=full '
@@ -64,7 +64,7 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            input_command=f'echo {self.become_password} | '
+            input_command=f'echo "{self.become_password}" | '
                     'sudo -S -u postgres pgbackrest info'
         )
 
@@ -73,7 +73,7 @@ class PgRunner:
         This method checks the pgbackrest stanza.
         """
         return self.os_runner.run_cmd(
-            input_command=f'echo {self.become_password} | '
+            input_command=f'echo "{self.become_password}" | '
                     'sudo -S -u postgres pgbackrest '
                     '--stanza=demo '
                     '--log-level-console=info '
