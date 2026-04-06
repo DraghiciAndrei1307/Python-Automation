@@ -17,7 +17,7 @@ AUTHOR = 'Andrei Draghici'
 AUTHOR_EMAIL = 'draghici.andrei12@yahoo.com'
 
 setup(
-    name='pg_runner_draghici_andrei',
+    name='pg_executor_draghici_andrei',
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
