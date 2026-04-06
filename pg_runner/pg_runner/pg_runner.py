@@ -3,7 +3,7 @@
  This module was created to run simple PostgreSQL management procedures
 """
 
-
+import os
 from os_runner import OsRunner
 
 
@@ -11,6 +11,7 @@ class PgRunner:
 
     def __init__(self):
         self.os_runner = OsRunner()
+        self.become_password = os.environ.get('BECOME_PASSWORD')
 
     def check_postgresql_status(self, version):
         """
@@ -18,7 +19,8 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            command='systemctl status '
+            input_command=f'echo {self.become_password} | '
+                    'sudo -S systemctl status '
                     f'postgresql-{version}'
         )
 
@@ -29,7 +31,8 @@ class PgRunner:
 
         if self.check_postgresql_status(version):
             return self.os_runner.run_cmd(
-                command=f'systemctl start postgresql-{version}'
+                input_command=f'echo {self.become_password} | '
+                        f'sudo -S systemctl start postgresql-{version}'
             )
 
     def stop_pg(self, version):
@@ -38,7 +41,8 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            command=f'systemctl stop postgresql-{version}'
+            input_command=f'echo {self.become_password} | '
+                    f'sudo -S systemctl stop postgresql-{version}'
         )
 
     def backup_pg(self):
@@ -47,7 +51,8 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            command='sudo -u postgres pgbackrest '
+            input_command=f'echo {self.become_password} | '
+                    'sudo -S -u postgres pgbackrest '
                     '--stanza=demo '
                     '--type=full '
                     '--log-level-console=info backup'
@@ -59,7 +64,8 @@ class PgRunner:
         """
 
         return self.os_runner.run_cmd(
-            command='sudo -u postgres pgbackrest info'
+            input_command=f'echo {self.become_password} | '
+                    'sudo -S -u postgres pgbackrest info'
         )
 
     def check_stanza(self):
@@ -67,7 +73,8 @@ class PgRunner:
         This method checks the pgbackrest stanza.
         """
         return self.os_runner.run_cmd(
-            command='sudo -u postgres pgbackrest '
+            input_command=f'echo {self.become_password} | '
+                    'sudo -S -u postgres pgbackrest '
                     '--stanza=demo '
                     '--log-level-console=info '
                     'check'
