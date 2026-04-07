@@ -133,7 +133,7 @@ class PgRunner:
             output = ''
 
             for _ in list_to_format:
-                output += _.replace(' ', '') + '\n'
+                output += _ + '\n'
 
             self.logger.info(
                 f"PostgreSQL 14 database backups:\n"
