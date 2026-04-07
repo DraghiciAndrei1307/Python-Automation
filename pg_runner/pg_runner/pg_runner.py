@@ -155,8 +155,6 @@ class PgRunner:
         )
 
         if result['success']:
-            self.logger.info(f"PostgreSQL check_stanza: {result['stdout']}")
-            print(result['stdout'])
+            self.logger.info(f"\nPostgreSQL 14 database STANZA: \n{result['stdout']}")
         else:
-            self.logger.error(f"PostgreSQL check_stanza: {result['stderr']}")
-            print(result['stderr'])
+            self.logger.error(f"PostgreSQL stanza info cannot be checked due to: {result['stderr']}")
