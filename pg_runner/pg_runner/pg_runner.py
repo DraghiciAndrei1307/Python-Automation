@@ -125,11 +125,15 @@ class PgRunner:
         )
 
         if result['success']:
-            self.logger.info(f"PostgreSQL backup_info: {result['stdout']}")
-            print(result['stdout'])
+
+            raw_list = result['stdout'].splitlines()
+
+            self.logger.info(
+                f"PostgreSQL 14 database backups:\n"
+                f"{raw_list}"
+            )
         else:
-            self.logger.error(f"PostgreSQL backup_info: {result['stderr']}")
-            print(result['stderr'])
+            self.logger.error(f"The backup info cannot be loaded due to: {result['stderr']}")
 
     def check_stanza(self):
         """
