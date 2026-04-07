@@ -41,7 +41,7 @@ def check_postgresql_status(ctx, version):
     """
 
     pg_runner = setup_pg_runner()
-    print(pg_runner.check_postgresql_status(version=version))
+    pg_runner.check_postgresql_status(version=version)
 
 @cli.command()
 @click.option(
@@ -60,7 +60,7 @@ def start_pg(ctx, version):
     :return:
     """
     pg_runner = setup_pg_runner()
-    print(pg_runner.start_pg(version=version))
+    pg_runner.start_pg(version=version)
 
 @cli.command()
 @click.option(
@@ -79,7 +79,7 @@ def stop_pg(ctx, version):
     :return:
     """
     pg_runner = setup_pg_runner()
-    print(pg_runner.stop_pg(version=version))
+    pg_runner.stop_pg(version=version)
 
 @cli.command()
 @click.pass_context
@@ -91,7 +91,7 @@ def backup_pg(ctx):
     :return:
     """
     pg_runner = setup_pg_runner()
-    print(pg_runner.backup_pg())
+    pg_runner.backup_pg()
 
 @cli.command()
 @click.pass_context
@@ -103,7 +103,7 @@ def backup_info(ctx):
     :return:
     """
     pg_runner = setup_pg_runner()
-    print(pg_runner.backup_info())
+    pg_runner.backup_info()
 
 @cli.command()
 @click.pass_context
@@ -115,4 +115,4 @@ def check_stanza(ctx):
     :return:
     """
     pg_runner = setup_pg_runner()
-    print(pg_runner.check_stanza())
+    pg_runner.check_stanza()

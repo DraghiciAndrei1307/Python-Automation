@@ -33,6 +33,6 @@ jobs:
           files: |
             pg_executor/dist/*.whl
             pg_executor/dist/*.tar.gz
-          tag_name: v0.1.2
-          name: Release v0.1.2
+          tag_name: v0.2.0
+          name: Release v0.2.0
           body: "The official release of the pg_executor_draghici_andrei package."
