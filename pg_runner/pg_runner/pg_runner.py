@@ -37,6 +37,17 @@ class PgRunner:
         # add handler to logger
         self.logger.addHandler(self.console_handler)
 
+        # configure file handler
+
+        if self.logging_path:
+            # create FileHandler
+            self.file_handler = logging.FileHandler(self.logging_path)
+            # set the same formatter for the FileHandler
+            self.file_handler.setFormatter(formatter)
+            # add the new FileHandler to the logger
+            self.logger.addHandler(self.file_handler)
+
+
     def check_postgresql_status(self, version):
         """
         This method checks if the cluster is running or not.
@@ -50,10 +61,8 @@ class PgRunner:
 
         if 'Active: active (running)' in result['stdout']:
             self.logger.info(f"PostgreSQL 14 database server is ACTIVE.")
-            print(f"Active: {result['stdout']}")
         else:
             self.logger.error(f"PostgreSQL 14 database server is INACTIVE.")
-            print(f"Inactive: {result['stdout']}")
 
     def start_pg(self, version):
         """
