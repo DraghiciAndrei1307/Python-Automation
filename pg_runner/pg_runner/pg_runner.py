@@ -62,7 +62,7 @@ class PgRunner:
         if 'Active: active (running)' in result['stdout']:
             self.logger.info(f"PostgreSQL 14 database server is ACTIVE.")
         else:
-            self.logger.error(f"PostgreSQL 14 database server is INACTIVE.")
+            self.logger.info(f"PostgreSQL 14 database server is INACTIVE.")
 
     def start_pg(self, version):
         """
@@ -75,11 +75,9 @@ class PgRunner:
         )
 
         if result['success']:
-            self.logger.info(f"PostgreSQL start: {result['stdout']}")
-            print(result['stdout'])
+            self.logger.info(f"PostgreSQL 14 database server is UP and RUNNING.")
         else:
-            self.logger.error(f"PostgreSQL start: {result['stderr']}")
-            print(result['stderr'])
+            self.logger.error(f"PostgreSQL 14 database encountered an error: {result['stderr']}")
 
     def stop_pg(self, version):
         """
@@ -92,11 +90,9 @@ class PgRunner:
         )
 
         if result['success']:
-            self.logger.info(f"PostgreSQL stop: {result['stdout']}")
-            print(result['stdout'])
+            self.logger.info(f"PostgreSQL 14 database server is STOPPED.")
         else:
-            self.logger.error(f"PostgreSQL stop: {result['stderr']}")
-            print(result['stderr'])
+            self.logger.error(f"PostgreSQL 14 database encountered an error: {result['stderr']}")
 
     def backup_pg(self):
         """
