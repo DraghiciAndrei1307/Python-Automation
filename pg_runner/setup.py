@@ -4,7 +4,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 DESCRIPTION = (
     'This is the pg_runner. It is used to perform '
     'PostgreSQL management operations.'

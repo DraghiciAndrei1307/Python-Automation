@@ -28,7 +28,7 @@ class PgRunner:
         # define and set formatter
         formatter = logging.Formatter(
             fmt='%(asctime)s %(levelname)s: %(name)s: %(message)s',
-            detefmt="%Y-%m-%d %H:%M:%S"
+            datefmt="%Y-%m-%d %H:%M:%S"
         )
 
         # add handler to logger
