@@ -50,10 +50,10 @@ class PgRunner:
 
         if 'Active: active (running)' in result['stdout']:
             self.logger.info(f"PostgreSQL 14 database server is ACTIVE.")
-            print(result['stdout'])
+            print(f"Active: {result['stdout']}")
         else:
             self.logger.error(f"PostgreSQL 14 database server is INACTIVE.")
-            print(result['stdout'])
+            print(f"Inactive: {result['stdout']}")
 
     def start_pg(self, version):
         """
