@@ -14,9 +14,25 @@ class PgRunner:
         self.os_runner = OsRunner()
         self.become_password = os.environ.get('BECOME_PASSWORD')
 
+        # configure logging
         self.logging_path = os.environ.get('LOGGING_PATH')
-        logging.basicConfig(filename=self.logging_path, level=logging.INFO)
         self.logger = logging.getLogger('pg_runner')
+        self.logger.setLevel(logging.DEBUG)
+
+        # clear existing handlers (avoid duplicates)
+        self.logger.handlers.clear()
+
+        # create console handler
+        self.console_handler = logging.StreamHandler()
+
+        # define and set formatter
+        formatter = logging.Formatter(
+            fmt='%(asctime)s %(levelname)s: %(name)s: %(message)s',
+            detefmt="%Y-%m-%d %H:%M:%S"
+        )
+
+        # add handler to logger
+        self.logger.addHandler(self.console_handler)
 
     def check_postgresql_status(self, version):
         """
@@ -29,12 +45,12 @@ class PgRunner:
             input_data=f"{self.become_password}\n"
         )
 
-        if result['success']:
-            self.logger.info(f"PostgreSQL status: {result['stdout']}")
+        if 'Active: active (running)' in result['stdout']:
+            self.logger.info(f"PostgreSQL 14 database server is ACTIVE.")
             print(result['stdout'])
         else:
-            self.logger.error(f"PostgreSQL status: {result['stderr']}")
-            print(result['stderr'])
+            self.logger.error(f"PostgreSQL 14 database server is INACTIVE.")
+            print(result['stdout'])
 
     def start_pg(self, version):
         """
