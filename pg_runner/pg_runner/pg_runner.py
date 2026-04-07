@@ -128,9 +128,16 @@ class PgRunner:
 
             raw_list = result['stdout'].splitlines()
 
+            list_to_format = raw_list[7:]
+
+            output = ''
+
+            for _ in list_to_format:
+                output += _.replace(' ', '') + '\n'
+
             self.logger.info(
                 f"PostgreSQL 14 database backups:\n"
-                f"{raw_list}"
+                f"{output}"
             )
         else:
             self.logger.error(f"The backup info cannot be loaded due to: {result['stderr']}")
