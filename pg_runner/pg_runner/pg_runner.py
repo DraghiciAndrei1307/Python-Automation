@@ -31,6 +31,9 @@ class PgRunner:
             datefmt="%Y-%m-%d %H:%M:%S"
         )
 
+        # set formatter
+        self.console_handler.setFormatter(formatter)
+
         # add handler to logger
         self.logger.addHandler(self.console_handler)
 
