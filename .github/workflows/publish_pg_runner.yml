@@ -33,6 +33,6 @@ jobs:
           files: |
             pg_runner/dist/*.whl
             pg_runner/dist/*.tar.gz
-          tag_name: v0.2.9
-          name: Release v0.2.9
+          tag_name: v0.2.10
+          name: Release v0.2.10
           body: "The official release of the pg_runner_draghici_andrei package."

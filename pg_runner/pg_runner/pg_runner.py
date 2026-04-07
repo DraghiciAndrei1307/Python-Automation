@@ -136,7 +136,7 @@ class PgRunner:
                 output += _ + '\n'
 
             self.logger.info(
-                f"PostgreSQL 14 database backups:\n"
+                f"\nPostgreSQL 14 database BACKUPS:\n"
                 f"{output}"
             )
         else:
