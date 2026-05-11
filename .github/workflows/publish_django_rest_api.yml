@@ -1,4 +1,4 @@
-name: Publish 'pg_runner' Package (PyPI & GitHub)
+name: Publish 'django_rest_api' Package (PyPI & GitHub)
 on: push
 jobs:
   publish:
@@ -16,25 +16,25 @@ jobs:
         run: |
           pip install setuptools wheel twine build
           pip install -r requirements.txt
-      - name: Build 'pg_runner' package
+      - name: Build 'django_rest_api' package
         run: |
-          cd pg_runner
+          cd django_rest_api
           python -m build
-      - name: Create GitHub Release for 'pg_runner' package
+      - name: Create GitHub Release for 'django_rest_api' package
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            pg_runner/dist/*.whl
-            pg_runner/dist/*.tar.gz
-          tag_name: pg_runner-v0.0.1
-          name: Release of 'pg_runner' v0.0.1
-          body: "The official release of the pg_runner_draghici_andrei package."
-#      - name: Build and Publish 'pg_runner' package to PyPi
+            django_rest_api/dist/*.whl
+            django_rest_api/dist/*.tar.gz
+          tag_name: django_rest_api-v0.0.1
+          name: Release of 'django_rest_api' v0.0.1
+          body: "The official release of the django_rest_api_draghici_andrei package."
+#      - name: Build and Publish 'django_rest_api' package to PyPi
 #        env:
 #          TWINE_USERNAME: __token__
 #          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 #        run: |
-#          cd pg_runner
+#          cd django_rest_api
 #          python -m build
 #          twine upload dist/* --verbose
 

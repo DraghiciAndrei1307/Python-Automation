@@ -12,3 +12,5 @@ capabilities.
 In order to have a better understanding of what I am trying to achieve, consult this diagram: 
 [structural diagram](../docs/diagrams/PostgreSQL_provisioning_platform.png)
 
+Update1: I managed to link the pg_provisioner_cli to the ansible playbook that executes the VM provisioning.
+
