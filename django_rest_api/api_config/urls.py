@@ -17,7 +17,7 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 
-from django_rest_api.provisioner_api import views
+from provisioner_api import views
 
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
