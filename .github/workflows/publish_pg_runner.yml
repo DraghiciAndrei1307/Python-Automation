@@ -25,12 +25,12 @@ jobs:
           tag_name: v0.0.1
           name: Release of 'pg_runner' v0.0.1
           body: "The official release of the pg_runner_draghici_andrei package."
-      - name: Build and Publish 'pg_runner' package to PyPi
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          cd pg_runner
-          python -m build
-          twine upload dist/* --verbose
+#      - name: Build and Publish 'pg_runner' package to PyPi
+#        env:
+#          TWINE_USERNAME: __token__
+#          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+#        run: |
+#          cd pg_runner
+#          python -m build
+#          twine upload dist/* --verbose
 

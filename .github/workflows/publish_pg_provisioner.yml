@@ -25,12 +25,12 @@ jobs:
           tag_name: v0.0.1
           name: Release of 'pg_provisioner' v0.0.1
           body: "The official release of the pg_provisioner_draghici_andrei package."
-      - name: Build and Publish 'pg_provisioner' package to PyPi
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          cd pg_provisioner
-          python -m build
-          twine upload dist/* --verbose
+#      - name: Build and Publish 'pg_provisioner' package to PyPi
+#        env:
+#          TWINE_USERNAME: __token__
+#          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+#        run: |
+#          cd pg_provisioner
+#          python -m build
+#          twine upload dist/* --verbose
 
