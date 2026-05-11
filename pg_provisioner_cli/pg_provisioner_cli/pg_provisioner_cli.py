@@ -26,7 +26,7 @@ def cli(ctx):
 
 @cli.command()
 @click.pass_context
-def provision_new_pg_vm():
+def provision_new_pg_vm(ctx):
     """
     Method that uses the pg_provisioner to start
     the PostgreSQL VM provisioning process.
