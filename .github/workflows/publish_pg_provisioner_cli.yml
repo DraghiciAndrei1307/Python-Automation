@@ -1,8 +1,5 @@
 name: Publish 'pg_provisioner_cli' Package (PyPI & GitHub)
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -33,6 +30,6 @@ jobs:
           files: |
             pg_provisioner_cli/dist/*.whl
             pg_provisioner_cli/dist/*.tar.gz
-          tag_name: v0.1.1
-          name: Release v0.1.1
+          tag_name: v0.0.1
+          name: Release v0.0.1
           body: "The official release of the pg_provisioner_cli_draghici_andrei package."
