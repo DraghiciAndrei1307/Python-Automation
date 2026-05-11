@@ -23,7 +23,7 @@ jobs:
             os_executor/dist/*.whl
             os_executor/dist/*.tar.gz
           tag_name: v0.0.1
-          name: Release v0.0.1
+          name: Release of 'os_executor' v0.0.1
           body: "The official release of the os_executor_draghici_andrei package"
       - name: Build and Publish 'os_executor' package to PyPi
         env:

@@ -23,7 +23,7 @@ jobs:
             pg_runner_cli/dist/*.whl
             pg_runner_cli/dist/*.tar.gz
           tag_name: v0.0.1
-          name: Release v0.0.1
+          name: Release of 'pg_runner_cli' v0.0.1
           body: "The official release of the pg_runner_cli_draghici_andrei package."
       - name: Build and Publish 'pg_runner_cli' package to PyPi
         env:
