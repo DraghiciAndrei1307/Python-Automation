@@ -33,8 +33,14 @@ def provision_new_pg_vm(ctx):
     :return:
     """
 
-    pg_provisioner = setup_pg_provisioner()
-    pg_provisioner.start_pg_vm_provisioning()
+    print("DEBUG: Start provisioning command...")
+    try:
+        pg_provisioner = setup_pg_provisioner()
+        print(f"DEBUG: PgProvisioner instantiated. Vault pass set: {bool(pg_provisioner.vault_password)}")
+        pg_provisioner.start_pg_vm_provisioning()
+        print("DEBUG: Command sent to OsRunner.")
+    except Exception as e:
+        print(f"DEBUG ERROR: {e}")
 
 
 
