@@ -1,6 +1,6 @@
 # PostgreSQL-Python-Automation
 
-# Documentation
+## Documentation
 
 Individual package documentation:
 
