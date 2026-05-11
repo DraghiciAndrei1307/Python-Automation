@@ -48,8 +48,15 @@ class PgProvisioner:
 
     def start_pg_vm_provisioning(self):
 
-        self.os_runner.run_cmd(
+        result = self.os_runner.run_cmd(
             input_command='ansible-playbook -i inventories/ provision_postgresql_VM.yml --ask-vault-pass',
             input_data=f"{self.vault_password}\n"
         )
 
+        if result["stdout"]:
+            print(result["stdout"])
+        if result["stderr"]:
+            print(result["stderr"])
+
+        if not result["success"]:
+            self.logger.error(f"Ansible failed with exit code {result['exit_code']}")
