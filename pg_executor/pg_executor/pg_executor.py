@@ -2,12 +2,15 @@
 This module acts as a CLI interface for pg_runner.
 """
 import click
+
+from pg_provisioner.pg_provisioner import PgProvisioner
 from pg_runner import PgRunner
 
+# ------------------ PgRunner functions ------------------------ #
 
 def setup_pg_runner():
     """
-    Sets up the os runner.
+    Sets up the pg runner.
     :return:
     """
     return PgRunner()
@@ -116,3 +119,23 @@ def check_stanza(ctx):
     """
     pg_runner = setup_pg_runner()
     pg_runner.check_stanza()
+
+# -------------------------------------------------------------- #
+
+# ------------------ PgProvisioner functions ------------------- #
+
+def setup_pg_provisioner():
+    """
+    Sets up the pg provisioner.
+    :return:
+    """
+    return PgProvisioner()
+
+@cli.command()
+@click.pass_context
+def provision_pg_vm(ctx):
+
+    pg_provisioner = setup_pg_provisioner()
+    pg_provisioner.start_pg_vm_provisioning()
+
+# -------------------------------------------------------------- #

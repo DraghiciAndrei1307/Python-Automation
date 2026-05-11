@@ -7,7 +7,7 @@ between the user and the pg_runner.
 from setuptools import setup, find_packages
 
 
-VERSION = '0.2.0'
+VERSION = '0.2.1'
 DESCRIPTION = 'This is the pg_executor module.'
 LONG_DESCRIPTION = (
     'This is the CLI interface that stands '
@@ -27,7 +27,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         'click',
-        'pg_runner_draghici_andrei'
+        'pg_runner_draghici_andrei',
+        'pg_provisioner_draghici_andrei',
     ],
     entry_points={
         'console_scripts': [
