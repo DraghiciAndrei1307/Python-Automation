@@ -7,8 +7,8 @@ between the user and the pg_runner.
 from setuptools import setup, find_packages
 
 
-VERSION = '0.1.0'
-DESCRIPTION = 'This is the pg_provisioner_cli module.'
+VERSION = '0.1.1'
+DESCRIPTION = 'This is the runner_cli module.'
 LONG_DESCRIPTION = (
     'This is the CLI interface that stands '
     'between module the user and the pg_runner.'
@@ -17,7 +17,7 @@ AUTHOR = 'Andrei Draghici'
 AUTHOR_EMAIL = 'draghici.andrei12@yahoo.com'
 
 setup(
-    name='pg_executor_draghici_andrei',
+    name='pg_runner_cli_draghici_andrei',
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
@@ -32,7 +32,7 @@ setup(
     entry_points={
         'console_scripts': [
             # 'terminal command = package.file:function'
-            'pg_provisioner_cli=pg_provisioner_cli.pg_provisioner_cli:cli',
+            'pg_runner_cli=pg_runner_cli.pg_runner_cli:cli',
         ],
     },
 

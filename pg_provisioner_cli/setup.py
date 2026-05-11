@@ -10,7 +10,7 @@ This package must be executed on the master node.
 from setuptools import setup, find_packages
 
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 DESCRIPTION = 'This is the pg_provisioner_cli module.'
 LONG_DESCRIPTION = (
     'This is the CLI interface that stands '
@@ -20,7 +20,7 @@ AUTHOR = 'Andrei Draghici'
 AUTHOR_EMAIL = 'draghici.andrei12@yahoo.com'
 
 setup(
-    name='pg_executor_draghici_andrei',
+    name='pg_provisioner_cli_draghici_andrei',
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
