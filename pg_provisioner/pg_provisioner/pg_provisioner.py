@@ -6,7 +6,7 @@ import os
 from os_runner import OsRunner
 import logging
 
-class PgProvisioner():
+class PgProvisioner:
 
     def __init__(self):
         self.os_runner = OsRunner()

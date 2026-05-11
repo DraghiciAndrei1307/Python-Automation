@@ -1,4 +1,4 @@
-name: Publish 'pg_executor' Package (PyPI & GitHub)
+name: Publish 'pg_provisioner_cli' Package (PyPI & GitHub)
 on:
   push:
     branches:
@@ -19,20 +19,20 @@ jobs:
         run: |
           pip install setuptools wheel twine build
           pip install -r requirements.txt
-      - name: Build and Publish 'pg_executor' package to PyPi
+      - name: Build and Publish 'pg_provisioner_cli' package to PyPi
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         run: |
-          cd pg_executor
+          cd pg_provisioner_cli
           python -m build
           twine upload dist/* --verbose
-      - name: Create GitHub Release for 'pg_executor' package
+      - name: Create GitHub Release for 'pg_provisioner_cli' package
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            pg_executor/dist/*.whl
-            pg_executor/dist/*.tar.gz
-          tag_name: v0.2.1
-          name: Release v0.2.1
-          body: "The official release of the pg_executor_draghici_andrei package."
+            pg_provisioner_cli/dist/*.whl
+            pg_provisioner_cli/dist/*.tar.gz
+          tag_name: v0.1.0
+          name: Release v0.1.0
+          body: "The official release of the pg_provisioner_cli_draghici_andrei package."

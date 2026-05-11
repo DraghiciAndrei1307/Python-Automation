@@ -1,14 +1,17 @@
 """
 This package acts as a layer of
 abstraction (a CLI interface)
-between the user and the pg_runner.
+between the Django API and the pg provisioner.
+
+This package must be executed on the master node.
+
 """
 
 from setuptools import setup, find_packages
 
 
-VERSION = '0.2.1'
-DESCRIPTION = 'This is the pg_executor module.'
+VERSION = '0.1.0'
+DESCRIPTION = 'This is the pg_provisioner_cli module.'
 LONG_DESCRIPTION = (
     'This is the CLI interface that stands '
     'between module the user and the pg_runner.'
@@ -27,13 +30,12 @@ setup(
     packages=find_packages(),
     install_requires=[
         'click',
-        'pg_runner_draghici_andrei',
         'pg_provisioner_draghici_andrei',
     ],
     entry_points={
         'console_scripts': [
             # 'terminal command = package.file:function'
-            'pg_executor=pg_executor.pg_executor:cli',
+            'pg_provisioner_cli=pg_provisioner_cli.pg_provisioner_cli:cli',
         ],
     },
 

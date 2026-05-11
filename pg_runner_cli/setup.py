@@ -1,23 +1,23 @@
 """
 This package acts as a layer of
 abstraction (a CLI interface)
-between the Django API and the Ansible provisioning platform.
+between the user and the pg_runner.
 """
 
 from setuptools import setup, find_packages
 
 
-VERSION = '0.1.1'
-DESCRIPTION = 'This is the pg_provisioner module.'
+VERSION = '0.1.0'
+DESCRIPTION = 'This is the pg_provisioner_cli module.'
 LONG_DESCRIPTION = (
     'This is the CLI interface that stands '
-    'between the Django API and the Ansible provisioning platform.'
+    'between module the user and the pg_runner.'
 )
 AUTHOR = 'Andrei Draghici'
 AUTHOR_EMAIL = 'draghici.andrei12@yahoo.com'
 
 setup(
-    name='pg_provisioner_draghici_andrei',
+    name='pg_executor_draghici_andrei',
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
@@ -26,8 +26,15 @@ setup(
     url='https://github.com/draghiciandrei1307/python-automation',
     packages=find_packages(),
     install_requires=[
-        'os_runner_draghici_andrei'
-    ]
+        'click',
+        'pg_runner_draghici_andrei',
+    ],
+    entry_points={
+        'console_scripts': [
+            # 'terminal command = package.file:function'
+            'pg_provisioner_cli=pg_provisioner_cli.pg_provisioner_cli:cli',
+        ],
+    },
 
 )
 

@@ -122,20 +122,3 @@ def check_stanza(ctx):
 
 # -------------------------------------------------------------- #
 
-# ------------------ PgProvisioner functions ------------------- #
-
-def setup_pg_provisioner():
-    """
-    Sets up the pg provisioner.
-    :return:
-    """
-    return PgProvisioner()
-
-@cli.command()
-@click.pass_context
-def provision_pg_vm(ctx):
-
-    pg_provisioner = setup_pg_provisioner()
-    pg_provisioner.start_pg_vm_provisioning()
-
-# -------------------------------------------------------------- #
