@@ -16,6 +16,10 @@ jobs:
         run: |
           pip install setuptools wheel twine build
           pip install -r requirements.txt
+      - name: Build 'pg_provisioner_cli' package
+        run: |
+          cd pg_provisioner_cli
+          python -m build
       - name: Create GitHub Release for 'pg_provisioner_cli' package
         uses: softprops/action-gh-release@v2
         with:

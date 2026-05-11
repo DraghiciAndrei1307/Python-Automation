@@ -16,6 +16,10 @@ jobs:
         run: |
           pip install setuptools wheel twine build
           pip install -r requirements.txt
+      - name: Build 'pg_runner' package
+        run: |
+          cd pg_runner
+          python -m build
       - name: Create GitHub Release for 'pg_runner' package
         uses: softprops/action-gh-release@v2
         with:

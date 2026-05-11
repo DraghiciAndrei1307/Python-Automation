@@ -16,6 +16,10 @@ jobs:
         run: |
           pip install setuptools wheel twine build
           pip install -r requirements.txt
+      - name: Build 'os_executor' package
+        run: |
+          cd os_executor
+          python -m build
       - name: Create GitHub Release for 'os_executor' package
         uses: softprops/action-gh-release@v2
         with:
