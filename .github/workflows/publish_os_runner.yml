@@ -1,5 +1,5 @@
 name: Publish 'os_runner' Package (PyPI & GitHub)
-on: workflow_dispatch
+on: push
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
             os_runner/dist/*.whl
             os_runner/dist/*.tar.gz
           tag_name: os_runner v0.0.1
-          name: Release of 'os_runner' v0.0.1
+          name: Release of 'os_runner'-v0.0.1
           body: "The first official release of the os_runner_draghici_andrei package"
 #      - name: Build and Publish 'os_runner' package to PyPi
 #        env:
