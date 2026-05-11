@@ -9,10 +9,10 @@ def main():
     except ImportError as exc:
         raise ImportError("Django is not installed") from exc
 
-    # no args: the server will start on 0.0.0.0:8000
+    # no args: the server will start on 0.0.0.0:9001
     args = sys.argv
     if len(args) == 1:
         args.append('runserver')
-        args.append('0.0.0.0:8000')
+        args.append('0.0.0.0:9001')
 
     execute_from_command_line(args)
