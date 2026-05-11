@@ -16,14 +16,6 @@ jobs:
         run: |
           pip install setuptools wheel twine build
           pip install -r requirements.txt
-      - name: Build and Publish 'pg_provisioner' package to PyPi
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          cd pg_provisioner
-          python -m build
-          twine upload dist/* --verbose
       - name: Create GitHub Release for 'pg_provisioner' package
         uses: softprops/action-gh-release@v2
         with:
@@ -33,3 +25,12 @@ jobs:
           tag_name: v0.1.1
           name: Release v0.1.1
           body: "The official release of the pg_provisioner_draghici_andrei package."
+      - name: Build and Publish 'pg_provisioner' package to PyPi
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          cd pg_provisioner
+          python -m build
+          twine upload dist/* --verbose
+
