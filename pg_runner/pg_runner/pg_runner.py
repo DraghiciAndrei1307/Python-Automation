@@ -108,11 +108,32 @@ class PgRunner:
         )
 
         if result['success']:
-            self.logger.info(f"PostgreSQL backup_pg: {result['stdout']}")
-            print(result['stdout'])
+            self.logger.info(f"Full backup {} ")
         else:
             self.logger.error(f"PostgreSQL backup_pg: {result['stderr']}")
-            print(result['stderr'])
+
+    def restore_pg(self, version=14 , path='/var/lib/pgsql'):
+        """
+        This method performs database 'default' restore.
+        :return:
+        """
+
+        pg_data_path= path + version + '/data'
+
+        # remove everything from pg_data_path
+
+        remove_pg_data_contents_result = self.os_runner.run_cmd(
+            input_command=f'sudo -S -u postgres rm -rf {pg_data_path}/*',
+        )
+
+        if remove_pg_data_contents_result['success']:
+
+            result = self.os_runner.run_cmd(
+                input_command='sudo -S -u postgres pgbackrest --stanza=demo restore'
+            )
+
+
+
 
     def backup_info(self):
         """
