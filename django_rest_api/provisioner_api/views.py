@@ -33,12 +33,13 @@ class PostgreSQLVMViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
 
-        instance = serializer.save(status="Started")
+        instance = serializer.save(status="Queued")
 
-        # here we use the Python CLI to trigger the Ansible provision
+        # send the task to the Celery and Redis
 
-        pg_provisioner = PgProvisioner()
+        from .tasks import run_ansible_provisioning_task
+        run_ansible_provisioning_task.delay(instance.id)
 
-        pg_provisioner.start_pg_vm_provisioning()
+
 
 
