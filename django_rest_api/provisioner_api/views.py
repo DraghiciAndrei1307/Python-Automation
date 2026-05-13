@@ -1,8 +1,10 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
 
-from .serializers import GroupSerializer, UserSerializer
+from .models import PostgreSQLVM
+from .serializers import GroupSerializer, UserSerializer, PostgreSQLVMSerializer
 
+from pg_provisioner_draghici_andrei import PgProvisioner
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -22,3 +24,21 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all().order_by("name")
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class PostgreSQLVMViewSet(viewsets.ModelViewSet):
+
+    queryset = PostgreSQLVM.objects.all().order_by("-created_at")
+    serializer_class = PostgreSQLVMSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+
+        instance = serializer.save(status="Started")
+
+        # here we use the Python CLI to trigger the Ansible provision
+
+        pg_provisioner = PgProvisioner()
+
+        pg_provisioner.start_pg_vm_provisioning()
+
+

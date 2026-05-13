@@ -1,6 +1,8 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
 
+from django_rest_api.provisioner_api.models import PostgreSQLVM
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -12,3 +14,9 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ["url", "name"]
+
+class PostgreSQLVMSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = PostgreSQLVM
+        fields = ["url", "name", "hostname", "ip_address", "status", "created_at", "updated_at"]
+

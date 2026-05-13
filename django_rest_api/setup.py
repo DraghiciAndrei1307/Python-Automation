@@ -30,7 +30,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'click',
-        'pg_provisioner_cli_draghici_andrei',
+        'pg_provisioner_draghici_andrei',
         'djangorestframework',
     ],
     include_package_data=True,
