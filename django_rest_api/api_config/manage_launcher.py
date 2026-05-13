@@ -38,7 +38,7 @@ def create_superuser():
     parser = argparse.ArgumentParser(description='Create Django superuser')
     parser.add_argument('-u', '--username', required=True, help='Username', default=os.environ.get('DJANGO_SUPERUSER_NAME', 'admin'))
     parser.add_argument('-e', '--email', required=True, help='Email', default=os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@example.com'))
-    parser.add_argument('-p', '--password', required=True, help='Password', defualt=os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'password123'))
+    parser.add_argument('-p', '--password', required=True, help='Password', default=os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'password123'))
 
     args = parser.parse_args()
 
