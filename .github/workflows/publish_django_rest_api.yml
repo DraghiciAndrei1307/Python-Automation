@@ -1,5 +1,9 @@
 name: Publish 'django_rest_api' Package (PyPI & GitHub)
-on: push
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
