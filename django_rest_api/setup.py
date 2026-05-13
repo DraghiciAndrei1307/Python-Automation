@@ -39,6 +39,7 @@ setup(
             'run-pg-api=api_config.manage_launcher:main',
             'pg-api-create-superuser=api_config.manage_launcher:create_superuser',
             'pg-api-create-user=api_config.manage_launcher:create_user',
+            'migrate-pg-api = django.core.management:execute_from_command_line'
         ]
     }
 
