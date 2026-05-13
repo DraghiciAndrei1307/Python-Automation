@@ -19,12 +19,11 @@ from rest_framework import routers
 
 from provisioner_api import views
 
-from django_rest_api.provisioner_api.views import PostgreSQLVMViewSet
 
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
-router.register(r'vms', PostgreSQLVMViewSet)
+router.register(r'vms', views.PostgreSQLVMViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
