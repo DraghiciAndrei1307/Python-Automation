@@ -62,7 +62,7 @@ def create_user():
     parser = argparse.ArgumentParser(description='Create Django superuser')
     parser.add_argument('-u', '--username', required=True, help='Username', default='neo')
     parser.add_argument('-e', '--email', required=True, help='Email', default='neo@example.com')
-    parser.add_argument('-p', '--password', required=True, help='Password', defualt='password123')
+    parser.add_argument('-p', '--password', required=True, help='Password', default='password123')
 
     args = parser.parse_args()
 
