@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
 
-from django_rest_api.provisioner_api.models import PostgreSQLVM
+from .models import PostgreSQLVM
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
