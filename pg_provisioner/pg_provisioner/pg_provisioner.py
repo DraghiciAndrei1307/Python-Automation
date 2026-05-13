@@ -53,6 +53,9 @@ class PgProvisioner:
             input_data=f"{self.vault_password}\n"
         )
 
+        # here I need to come and be more precise (input + logging)
+        # eventually use the os_runner configured with detailed logging
+
         if result["stdout"]:
             print(result["stdout"])
         if result["stderr"]:
