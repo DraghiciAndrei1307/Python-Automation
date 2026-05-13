@@ -4,7 +4,7 @@ from rest_framework import permissions, viewsets
 from .models import PostgreSQLVM
 from .serializers import GroupSerializer, UserSerializer, PostgreSQLVMSerializer
 
-from pg_provisioner_draghici_andrei import PgProvisioner
+from pg_provisioner import PgProvisioner
 
 class UserViewSet(viewsets.ModelViewSet):
     """
