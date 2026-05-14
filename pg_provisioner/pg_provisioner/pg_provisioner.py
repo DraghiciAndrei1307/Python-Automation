@@ -48,6 +48,8 @@ class PgProvisioner:
 
     def start_pg_vm_provisioning(self):
 
+        self.os_runner.change_current_directory('/home/student/PostgreSQL-Ansible-Automation/ansible/')
+
         result = self.os_runner.run_cmd(
             input_command='ansible-playbook -i /home/student/PostgreSQL-Ansible-Automation/ansible/inventories/ /home/student/PostgreSQL-Ansible-Automation/ansible/provision_postgresql_VM.yml --vault-password-file /home/student/.vault_pass',
             input_data=f"{self.vault_password}\n"
